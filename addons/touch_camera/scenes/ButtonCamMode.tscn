@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/touch_camera/assets/ButtonCamMode.gd" type="Script" id=1]
+[ext_resource path="res://addons/touch_camera/assets/button_rotate.drawio.png" type="Texture" id=2]
+
+[node name="ButtonCamMode" type="Button"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_right = 50.0
+margin_bottom = 50.0
+toggle_mode = true
+icon = ExtResource( 2 )
+icon_align = 1
+expand_icon = true
+script = ExtResource( 1 )

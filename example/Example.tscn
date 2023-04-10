@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://addons/touch_camera/scenes/ButtonCamMode.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/touch_camera/scenes/TouchCamera2D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/touch_camera/scenes/TouchCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/touch_camera/scenes/ButtonSelectCamera.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CylinderMesh" id=1]
+
+[node name="Example" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+
+[node name="TouchCamera2D" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.16303, -1.3826e-07 )
+size = 4.0
+
+[node name="TouchCamera" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 0.808843, 0.588025, 0, -0.588025, 0.808843, 0, 0.996808, 0 )
+button_cam_mode = NodePath("../ButtonCamMode")
+
+[node name="CenterDot" parent="TouchCamera" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0 )
+
+[node name="Camera" parent="TouchCamera" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="ButtonCamMode" parent="." instance=ExtResource( 1 )]
+margin_left = 29.0
+margin_top = -77.0
+margin_right = 79.0
+margin_bottom = -27.0
+
+[node name="ButtonSelectCamera" parent="." instance=ExtResource( 4 )]
+margin_left = 31.0
+margin_top = -125.0
+margin_right = 60.0
+margin_bottom = -105.0
+rect_scale = Vector2( 1.5, 1.5 )
+camera_names = [ "Top View", "3D View" ]
+camera_nodes = [ NodePath("../TouchCamera2D"), NodePath("../TouchCamera") ]
+
+[editable path="TouchCamera"]
